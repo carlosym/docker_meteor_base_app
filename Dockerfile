@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER Stephen Pope, spope@projectricochet.com
+MAINTAINER Carlos Yagüe Méndez, carlos.yague@upf.edu
 
 RUN mkdir /home/meteorapp
 

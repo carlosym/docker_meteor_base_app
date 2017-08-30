@@ -47,7 +47,7 @@ Let's go!
 
 `./build.sh`
 
-## Docker : Running container in host machine (First approach)
+## Docker : Running container in host machine (First approach) 
 
 As you will know **Meteor** is a nice framework for creating real time applications with Javascript. In most of the cases **Meteor** use databases to store the data of  the app. Meteor mainly use MongoDB to store all the metadata.  In this first approach we will deploy our app in a Docker container and we will use a MongoDB database located in our host machine in a native way without using Docker to package the MongoDB.
 
@@ -60,6 +60,9 @@ Starting the **mongoDB** server
 `mongod`
 
 If everything went ok, you should see in the terminal something like *MongodB starting: pid ...*
+
+If you want to stop the docker server in the host machine type this command:
+
 
 ### Runnig the web app container 
 
@@ -78,4 +81,33 @@ Parameters:
 * ( -p ) exposing the container with the port 8080
 * ( --name meteor-base-app ) name of the container
 
+## Docker : Running container in host machine (Second approach) 
 
+In this second approach we will deploy our app in a Docker container and we will use a MongoDB database as a docker container. Then we will have two Docker containers the first for the database and the second one for the web app.
+
+### Running the database container
+
+Pulling the [mongo](https://hub.docker.com/_/mongo/) image from docker Hub:
+
+`docker pull mongo`
+
+Run mongo image:
+
+`docker run --name some-mongo -v /Users/carlos/Documents/DevOps/mongo_db/data/db:/data/db -p 27017:27017 -d mongo`
+
+### Runnig the web app container 
+
+`./run.sh`
+
+**What is inside the script?**
+
+`docker run -d --rm  -e ROOT_URL=http://localhost -e MONGO_URL=mongodb://10.80.29.27:27017/meteorbaseapp -p 8080:80  --name meteor-base-app carlosym1/docker_meteor_base_app`
+
+Parameters:
+
+* ( -it ) --> Run container in interactive mode
+* ( --rm ) --> Remove volume and container after being executed
+* ( -e ROOT_URL=http://localhost ) --> environment variable with app url
+* ( -e MONGO_URL=mongodb://10.80.130.86:27017/meteor ) --> environment variable with mongodb url (!!! Check the ip of your host machine)
+* ( -p ) exposing the container with the port 8080
+* ( --name meteor-base-app ) name of the container
