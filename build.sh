@@ -1,0 +1,1 @@
+docker build -t carlosym1/docker_meteor_base_app .
