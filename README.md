@@ -49,6 +49,10 @@ Is important to follow this file system structure, don't change the names of the
 
 Let's go!
 
+## Clonning the repository
+
+`git clone https://github.com/carlosym/docker_meteor_base_app.git`
+
 ## Docker : Building the image
 
 `chmod 777 docker_meteor_build.sh`

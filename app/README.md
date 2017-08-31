@@ -16,9 +16,9 @@ You will need to have installed the following technologies:
 
 # Starting with the app
 
-## Clonning the reposytory
+## Clonning the repository
 
-`git clone bla bla`
+`git clone https://github.com/carlosym/docker_meteor_base_app.git`
 
 ## Setting up our project
 
