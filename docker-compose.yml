@@ -1,0 +1,21 @@
+version: '3'
+services:
+  app:
+    build: .
+    image: carlosym1/docker_meteor_base_app
+    container_name: meteor-base-app
+    ports:
+      - "8080:80"
+    links:
+      - database
+    environment:
+      - ROOT_URL=http://localhost
+      - MONGO_URL=mongodb://10.80.29.27:27017/meteorbaseapp
+  database:
+    image: mongo
+    container_name: some-mongo
+    ports:
+      - "27017:27017"
+    command: mongod --smallfiles --quiet --logpath=/dev/null
+    volumes:
+      - "/Users/carlos/Documents/DevOps/mongo_db/data/db:/data/db"

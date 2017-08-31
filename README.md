@@ -7,6 +7,7 @@ This project contains a basic meteor application. The main goal of this project 
 You will need to have installed the following technologies:
 
  * Docker : https://docs.docker.com/engine/installation/
+ * Docker Compose: https://docs.docker.com/compose/
  * Git : https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
  * Meteor : https://www.meteor.com/
  * Node.js: https://nodejs.org/en/
@@ -17,12 +18,19 @@ You will need to have installed the following technologies:
 Docker:
 
 * Getting started with Docker: https://docs.docker.com/get-started/
+* Getting started with Docker Compose:
 * Cool tutorials about Docker by **Romin irani**: https://rominirani.com/docker-tutorial-series-a7e6ff90a023
 * My Docker Cheat Sheet by **Aymen El amri** :https://medium.com/statuscode/dockercheatsheet-9730ce03630d
 
 Meteor deployment:
 
 * Nice tutorial about meteor deployment and Docker by **Project Ricochet**:https://projectricochet.com/blog/production-meteor-and-node-using-docker-part-i
+
+Using Docker Compose:
+
+* Getting started with Docker Compose: https://docs.docker.com/compose/gettingstarted/
+* Docker Compose sintax: https://docs.docker.com/compose/compose-file/
+* Meteor app docker compose by *juozapas*: https://github.com/domasx2/meteor-docker
 
 # Starting with the Docker meteor deployment
 
@@ -43,11 +51,11 @@ Let's go!
 
 ## Docker : Building the image
 
-`chmod 777 build.sh`
+`chmod 777 docker_meteor_build.sh`
 
-`./build.sh`
+`./docker_meteor_build.sh`
 
-## Docker : Running container in host machine (First approach) 
+## Docker : Running container in host machine (First approach) (Mongo in host machine) (Docker web app)
 
 As you will know **Meteor** is a nice framework for creating real time applications with Javascript. In most of the cases **Meteor** use databases to store the data of  the app. Meteor mainly use MongoDB to store all the metadata.  In this first approach we will deploy our app in a Docker container and we will use a MongoDB database located in our host machine in a native way without using Docker to package the MongoDB.
 
@@ -66,7 +74,9 @@ If you want to stop the docker server in the host machine type this command:
 
 ### Runnig the web app container 
 
-`./run.sh`
+`chmod 777 docker_meteor_run.sh`
+
+`./docker_meteor_run.sh`
 
 **What is inside the script?**
 
@@ -81,7 +91,7 @@ Parameters:
 * ( -p ) exposing the container with the port 8080
 * ( --name meteor-base-app ) name of the container
 
-## Docker : Running container in host machine (Second approach) 
+## Docker : Running container in host machine (Second approach) (Docker Mongo) (Docker web app)
 
 In this second approach we will deploy our app in a Docker container and we will use a MongoDB database as a docker container. Then we will have two Docker containers the first for the database and the second one for the web app.
 
@@ -97,7 +107,9 @@ Run mongo image:
 
 ### Runnig the web app container 
 
-`./run.sh`
+`chmod 777 docker_meteor_run.sh`
+
+`./docker_meteor_run.sh`
 
 **What is inside the script?**
 
@@ -111,3 +123,27 @@ Parameters:
 * ( -e MONGO_URL=mongodb://10.80.130.86:27017/meteor ) --> environment variable with mongodb url (!!! Check the ip of your host machine)
 * ( -p ) exposing the container with the port 8080
 * ( --name meteor-base-app ) name of the container
+
+## Docker : Running container in host machine (Third approach) (Docker Compose)
+
+The first and second were ok, we were able to launch mongo as a server installed in our host machine or as a server in a docker container, then we were able to launch our todo web app. This is something really nice but It can be improved an automatized using Docker Compose.
+
+You can check the docker compose file [here](), remember that you should change the ip, volumes and ports if is need it.
+
+if you don't want to build the images of the web app you can comment the line 4 `build: .` with #. 
+
+`chmod 777 docker_compose_run.sh`
+
+`./docker_compose_run.sh`
+
+or
+
+`docker-compose up`
+
+
+
+
+
+
+
+
