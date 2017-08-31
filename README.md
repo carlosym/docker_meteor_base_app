@@ -34,7 +34,7 @@ Using Docker Compose:
 
 # Starting with the Docker meteor deployment
 
-Once the app is ready and we are happy the next step is the deployment. If you don't have the meteor app ready just follow this [guide](link to the guide)
+Once the app is ready and we are happy the next step is the deployment. If you don't have the meteor app ready just follow this [guide](https://github.com/carlosym/docker_meteor_base_app/tree/master/app)
 
 Important things to follow:
 
@@ -128,7 +128,7 @@ Parameters:
 
 The first and second were ok, we were able to launch mongo as a server installed in our host machine or as a server in a docker container, then we were able to launch our todo web app. This is something really nice but It can be improved an automatized using Docker Compose.
 
-You can check the docker compose file [here](), remember that you should change the ip, volumes and ports if is need it.
+You can check the docker compose file [here](https://github.com/carlosym/docker_meteor_base_app/blob/master/docker-compose.yml), remember that you should change the ip, volumes and ports if is need it.
 
 if you don't want to build the images of the web app you can comment the line 4 `build: .` with #. 
 

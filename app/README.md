@@ -38,4 +38,4 @@ You will need to have installed the following technologies:
 
 # Create a deployment version
 
-If you have the app ready for deployment or you just want to see how to deploy an application with Docker go to the next [page](page).
+If you have the app ready for deployment or you just want to see how to deploy an application with Docker go to the next [page](https://github.com/carlosym/docker_meteor_base_app).
